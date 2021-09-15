@@ -1,0 +1,1 @@
+web: python3 -m face_blur_bot

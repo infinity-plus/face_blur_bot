@@ -1,0 +1,27 @@
+{
+    "name": "Telegram Face Blur Bot",
+    "description": "A Telegram Bot to blur faces.",
+    "repository": "https://github.com/infinity-plus/face_blur_bot",
+    "logo": "",
+    "keywords": [
+        "python",
+        "opencv-python",
+        "telegram",
+        "python-telegram-bot"
+    ],
+    "image": "heroku/python",
+    "formation": {
+        "web": {
+            "quantity": 1,
+            "size": "free"
+        }
+    },
+    "env": {
+        "BOT_TOKEN": {
+            "description": "Bot API Key from BotFather https://t.me/BotFather"
+        },
+        "APP_NAME": {
+            "description": "Heroku app name."
+        }
+    }
+}
