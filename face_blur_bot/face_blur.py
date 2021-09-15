@@ -1,5 +1,6 @@
 import numpy as np
 import cv2
+from uuid import uuid4
 
 from face_blur_bot import MODEL_PATH, PROTOTXT_PATH
 
@@ -8,7 +9,7 @@ def face_blur(image_name: str,
               prototxt: str = PROTOTXT_PATH,
               model: str = MODEL_PATH,
               confidence2: float = 0.5,
-              blur_type: str = "pixelate") -> bytes:
+              blur_type: str = "pixelate") -> str:
     """A method to blur faces in an image using given model.
 
 - Args:
@@ -19,7 +20,7 @@ def face_blur(image_name: str,
     - `blur_type`: `str` -> the type of blur to be applied.
 
 - Return:
-    - `bytes` -> the processed image.
+    - `str` -> path of the processed image.
     """
 
     # load our serialized model from disk
@@ -55,8 +56,9 @@ def face_blur(image_name: str,
             image[start_y:end_y, start_x:end_x] = face
 
     # Return the final image
-    _, encoded_image = cv2.imencode('.png', image)
-    return encoded_image
+    img_name = str(uuid4()) + ".jpg"
+    cv2.imwrite(img_name, image)
+    return img_name
 
 
 def anonymize_face_simple(image: np.ndarray,

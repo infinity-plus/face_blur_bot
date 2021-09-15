@@ -3,6 +3,7 @@ from telegram.ext import CallbackContext, CommandHandler, Filters, Updater, Mess
 
 from .face_blur import face_blur
 from . import APP_NAME, BOT_TOKEN, PORT
+import os
 
 
 def start(update: Update, _: CallbackContext):
@@ -16,7 +17,9 @@ def blur(update: Update, _: CallbackContext):
     if isinstance(update.effective_message, Message):
         document = update.effective_message.document.get_file().download()
         new_doc = face_blur(document)
-        update.effective_message.reply_document(new_doc)
+        update.effective_message.reply_document(open(new_doc, 'rb'))
+        if os.path.isfile(new_doc):
+            os.remove(new_doc)
 
 
 updater = Updater(token=BOT_TOKEN)
