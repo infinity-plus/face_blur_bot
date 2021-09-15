@@ -1,7 +1,7 @@
 {
     "name": "Telegram Face Blur Bot",
     "description": "A Telegram Bot to blur faces.",
-    "repository": "https://github.com/infinity-plus/face_blur_bot",
+    "repository": "https://github.com/YAIFoundation/face_blur_bot",
     "logo": "",
     "keywords": [
         "python",
