@@ -1,9 +1,8 @@
 from telegram import Message, Update
-from telegram.ext import CallbackContext, CommandHandler, Filters, Updater
-from telegram.ext.messagehandler import MessageHandler
+from telegram.ext import CallbackContext, CommandHandler, Filters, Updater, MessageHandler
 
 from .face_blur import face_blur
-from . import APP_NAME, BOT_TOKEN
+from . import APP_NAME, BOT_TOKEN, PORT
 
 
 def start(update: Update, _: CallbackContext):
@@ -26,6 +25,7 @@ updater.dispatcher.add_handler(
     MessageHandler(Filters.document.category("image"), blur))
 
 updater.start_webhook(listen="0.0.0.0",
+                      port=PORT,
                       url_path=BOT_TOKEN,
                       webhook_url="https://{}.herokuapp.com/{}".format(
                           APP_NAME, BOT_TOKEN))
