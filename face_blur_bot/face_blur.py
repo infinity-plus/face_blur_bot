@@ -56,7 +56,7 @@ def face_blur(image_name: str,
             image[start_y:end_y, start_x:end_x] = face
 
     # Return the final image
-    img_name = str(uuid4()) + ".jpg"
+    img_name = f"{str(uuid4())}.jpg"
     cv2.imwrite(img_name, image)
     return img_name
 
