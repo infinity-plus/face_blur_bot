@@ -27,8 +27,9 @@ updater.dispatcher.add_handler(CommandHandler('start', start))
 updater.dispatcher.add_handler(
     MessageHandler(Filters.document.category("image"), blur))
 
-updater.start_webhook(listen="0.0.0.0",
-                      port=PORT,
-                      url_path=BOT_TOKEN,
-                      webhook_url="https://{}.herokuapp.com/{}".format(
-                          APP_NAME, BOT_TOKEN))
+updater.start_webhook(
+    listen="0.0.0.0",
+    port=PORT,
+    url_path=BOT_TOKEN,
+    webhook_url=f"https://{APP_NAME}.herokuapp.com/{BOT_TOKEN}",
+)
